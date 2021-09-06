@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id "io.freefair.lombok" version "5.3.0"
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.vk.api:sdk:+'
+    compile group: 'org.slf4j', name: 'slf4j-jdk14', version: '1.7.26'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.11.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.2'
+    compileOnly group: 'org.projectlombok', name: 'lombok-maven-plugin', version: '1.18.20.0'
+    implementation group: 'log4j', name: 'log4j', version: '1.2.17'
+    implementation group: 'net.morimekta.utils', name: 'android-util', version: '3.0.1'
+    implementation group: 'com.paypal.selion', name: 'SeLion-DataProviders', version: '1.2.0'
+    compileOnly("org.testng:testng:7.4.0")
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testImplementation("org.testng:testng:7.4.0")
+    testRuntimeOnly("org.testng:testng:7.4.0") {
+        exclude(group: 'testng')
+    }
+}
+
+test {
+    useTestNG()
+}
